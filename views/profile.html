@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Settings</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #00ff9d;
+            --secondary-color: #2a2d3e;
+            --background-dark: #1a1d2b;
+            --text-primary: #ffffff;
+            --hover-color: #34374c;
+            --card-bg: #2a2d3e;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--background-dark);
+            color: var(--text-primary);
+            margin: 0;
+            display: flex;
+            height: 100vh;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: var(--secondary-color);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        .sidebar .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .nav-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .nav-links a {
+            display: flex;
+            align-items: center;
+            padding: 10px 15px;
+            text-decoration: none;
+            color: var(--text-primary);
+            margin-bottom: 10px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background-color: var(--hover-color);
+        }
+
+        .nav-links .active {
+            background-color: var(--primary-color);
+            color: #000;
+        }
+
+        .nav-links i {
+            margin-right: 10px;
+        }
+
+        .logout-btn {
+            background-color: var(--hover-color);
+            padding: 10px;
+            border: none;
+            color: var(--text-primary);
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            background-color: var(--primary-color);
+            color: #000;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .profile-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .profile-header h1 {
+            font-size: 32px;
+            color: var(--primary-color);
+        }
+
+        .profile-settings {
+            background-color: var(--card-bg);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--hover-color);
+            border-radius: 5px;
+            background-color: var(--background-dark);
+            color: var(--text-primary);
+        }
+
+        .form-actions {
+            text-align: center;
+        }
+
+        .btn-primary {
+            padding: 10px 20px;
+            background-color: var(--primary-color);
+            color: #000;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--hover-color);
+            color: var(--text-primary);
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo">
+            <i class="fas fa-code"></i>
+            <span>TechPath</span>
+        </div>
+        <nav class="nav-links">
+            <a href="#" id="dashboardLink">
+                <i class="fas fa-laptop-code"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="/profile" class="active">
+                <i class="fas fa-user-circle"></i>
+                <span>Profile</span>
+            </a>
+        </nav>
+        <button class="logout-btn" onclick="logout()">Logout</button>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="profile-header">
+            <h1>Welcome, <span id="username">User</span>!</h1>
+            <p>Update your profile to keep it up to date.</p>
+        </div>
+
+        <div class="profile-settings">
+            <form id="profileForm">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" placeholder="Enter your full name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="skillLevel">Skill Level</label>
+                    <select id="skillLevel">
+                        <option value="">Select Skill Level</option>
+                        <option value="Beginner">Beginner</option>
+                        <option value="Intermediate">Intermediate</option>
+                        <option value="Advanced">Advanced</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="timeCommitment">Time Commitment</label>
+                    <select id="timeCommitment">
+                        <option value="">Select Time Commitment</option>
+                        <option value="Part-time">Part-time</option>
+                        <option value="Full-time">Full-time</option>
+                    </select>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <script>
+        const username = sessionStorage.getItem("username");
+        const careerInterest = sessionStorage.getItem("careerInterest");
+
+        if (!username) {
+            alert("Please log in to access this page.");
+            window.location.href = "/login";
+        } else {
+            document.getElementById("username").textContent = username;
+
+            document.getElementById("dashboardLink").href = `/dashboard-${careerInterest.replace(/\s+/g, '-').toLowerCase()}`;
+
+            fetch(`/profile-data?username=${username}`)
+                .then(res => res.json())
+                .then(data => {
+                    document.getElementById("name").value = data.name || '';
+                    document.getElementById("email").value = data.email || '';
+                    document.getElementById("skillLevel").value = data.skill_level || '';
+                    document.getElementById("timeCommitment").value = data.time_commitment || '';
+                });
+
+            document.getElementById("profileForm").addEventListener("submit", (e) => {
+                e.preventDefault();
+
+                const updatedData = {
+                    name: document.getElementById("name").value,
+                    email: document.getElementById("email").value,
+                    skill_level: document.getElementById("skillLevel").value,
+                    time_commitment: document.getElementById("timeCommitment").value,
+                };
+
+                fetch("/update-profile", {
+                    method: "PUT",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(updatedData),
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        alert(data.success ? "Profile updated successfully!" : "Failed to update profile.");
+                        sessionStorage.setItem("username", updatedData.name);
+                    });
+            });
+        }
+
+        function logout() {
+            sessionStorage.clear();
+            window.location.href = "/login";
+        }
+    </script>
+</body>
+</html>

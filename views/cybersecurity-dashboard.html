@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cybersecurity Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <style>
+        :root {
+            --primary-color: #4caf50;
+            --secondary-color: #2a2d3e;
+            --background-dark: #1a1d2b;
+            --text-primary: #ffffff;
+            --text-secondary: #8b8d93;
+            --accent-blue: #2196f3;
+            --hover-color: #34374c;
+            --gradient: linear-gradient(135deg, #4caf50, #2196f3);
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--background-dark);
+            color: var(--text-primary);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .hero-section {
+            background: var(--gradient);
+            padding: 20px;
+            border-radius: 10px;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+            align-items: center;
+            color: #000;
+        }
+
+        .hero-section .hero-details {
+            text-align: left;
+        }
+
+        .hero-section h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .hero-section p {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .hero-section .action-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .hero-section .action-buttons a {
+            background: var(--accent-blue);
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+
+        .hero-section .action-buttons a:hover {
+            background: var(--hover-color);
+        }
+
+        .hero-section img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 10px;
+            justify-self: center;
+        }
+
+        .metrics-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            text-align: center;
+        }
+
+        .metric {
+            background: var(--hover-color);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            color: var(--text-primary);
+        }
+
+        .metric h2 {
+            font-size: 36px;
+            color: var(--primary-color);
+        }
+
+        .swiper {
+            width: 100%;
+            margin: 20px 0;
+        }
+
+        .swiper-slide {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: var(--hover-color);
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .swiper-slide iframe {
+            width: 100%;
+            height: 250px;
+            border: none;
+            border-radius: 10px;
+        }
+
+        .resources {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .resource-item {
+            background: var(--hover-color);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, background 0.3s ease;
+            text-align: center;
+        }
+
+        .resource-item:hover {
+            transform: scale(1.05);
+            background: var(--primary-color);
+            color: var(--background-dark);
+        }
+
+        .resource-item h4 {
+            color: var(--primary-color);
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .testimonial-section {
+            background: var(--hover-color);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .testimonial-section h3 {
+            font-size: 24px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .testimonial {
+            font-style: italic;
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            color: var(--text-primary);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <section class="hero-section">
+            <div class="hero-details">
+                <h1>Welcome, <span id="username">Cybersecurity Enthusiast</span>!</h1>
+                <p>Your journey to mastering cybersecurity starts here. Explore the roadmap and resources below.</p>
+                <div class="action-buttons">
+                    <a href="#roadmap">View Roadmap</a>
+                    <a href="#resources">Explore Resources</a>
+                </div>
+            </div>
+            <img src="https://via.placeholder.com/300x250" alt="Cybersecurity Illustration">
+        </section>
+
+        <section class="metrics-section">
+            <div class="metric">
+                <h2>247</h2>
+                <p>Requirements/Categories</p>
+            </div>
+            <div class="metric">
+                <h2>961</h2>
+                <p>Control Enhancements</p>
+            </div>
+            <div class="metric">
+                <h2>571</h2>
+                <p>Best Practices</p>
+            </div>
+        </section>
+
+        <section class="swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <iframe src="https://www.youtube.com/embed/30rZjIpT_cY" allowfullscreen></iframe>
+                </div>
+                <div class="swiper-slide">
+                    <iframe src="https://www.youtube.com/embed/DaFNHDWkXH4" allowfullscreen></iframe>
+                </div>
+                <div class="swiper-slide">
+                    <iframe src="https://www.youtube.com/embed/Gj8IA6xOpSk" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </section>
+
+        <section class="resources" id="resources">
+            <div class="resource-item">
+                <h4>OWASP Foundation</h4>
+                <p><a href="https://owasp.org/" target="_blank">Visit Site</a></p>
+            </div>
+            <div class="resource-item">
+                <h4>NIST Publications</h4>
+                <p><a href="https://nvlpubs.nist.gov/" target="_blank">Visit Site</a></p>
+            </div>
+            <div class="resource-item">
+                <h4>Kali Linux Documentation</h4>
+                <p><a href="https://www.kali.org/" target="_blank">Visit Site</a></p>
+            </div>
+        </section>
+
+        <section class="testimonial-section">
+            <h3>User Testimonials</h3>
+            <p class="testimonial">"This platform has transformed how I approach cybersecurity!"</p>
+            <p class="testimonial-author">- Alex Smith</p>
+        </section>
+    </div>
+
+    <script>
+        const username = sessionStorage.getItem("username") || "Cybersecurity Enthusiast";
+        document.getElementById("username").textContent = username;
+
+        const swiper = new Swiper('.swiper', {
+            loop: true,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+        });
+    </script>
+</body>
+</html>

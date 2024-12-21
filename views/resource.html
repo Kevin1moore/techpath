@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resources Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4caf50;
+            --secondary-color: #2a2d3e;
+            --background-dark: #1a1d2b;
+            --text-primary: #ffffff;
+            --text-secondary: #8b8d93;
+            --accent-blue: #2196f3;
+            --hover-color: #34374c;
+            --gradient: linear-gradient(135deg, #4caf50, #2196f3);
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--background-dark);
+            color: var(--text-primary);
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .header {
+            width: 100%;
+            padding: 20px;
+            background: var(--gradient);
+            text-align: center;
+            color: #fff;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .content {
+            max-width: 1200px;
+            width: 100%;
+            padding: 20px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .resource-sections {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .resource-section {
+            background: var(--hover-color);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .resource-section:hover {
+            transform: scale(1.03);
+        }
+
+        .resource-section h2 {
+            color: var(--primary-color);
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .resource-section p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .resource-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .resource-list li {
+            margin: 10px 0;
+        }
+
+        .resource-list a {
+            color: var(--accent-blue);
+            text-decoration: none;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+        }
+
+        .resource-list a i {
+            margin-right: 10px;
+        }
+
+        .resource-list a:hover {
+            text-decoration: underline;
+        }
+
+        .section-title {
+            color: var(--primary-color);
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .video-embed {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .video-embed iframe {
+            width: 100%;
+            max-width: 800px;
+            height: 450px;
+            border: none;
+            border-radius: 10px;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .icon {
+            color: var(--primary-color);
+            margin-right: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">Resources Hub</div>
+
+    <div class="content">
+        <h1 class="section-title">Comprehensive Learning Resources</h1>
+        <p>Explore a curated collection of resources for mastering various fields, from web development to machine learning.</p>
+
+        <div class="resource-sections">
+            <div class="resource-section">
+                <h2>Web Development</h2>
+                <p>Dive into front-end and back-end development with these resources:</p>
+                <ul class="resource-list">
+                    <li><a href="https://developer.mozilla.org/" target="_blank"><i class="icon fas fa-code"></i>MDN Web Docs</a></li>
+                    <li><a href="https://www.w3schools.com/" target="_blank"><i class="icon fas fa-graduation-cap"></i>W3Schools</a></li>
+                    <li><a href="https://frontendmasters.com/" target="_blank"><i class="icon fas fa-laptop-code"></i>Frontend Masters</a></li>
+                    <li><a href="https://nodejs.org/" target="_blank"><i class="icon fas fa-server"></i>Node.js Documentation</a></li>
+                </ul>
+            </div>
+
+            <div class="resource-section">
+                <h2>Cloud Engineering</h2>
+                <p>Master cloud platforms and deployment tools:</p>
+                <ul class="resource-list">
+                    <li><a href="https://aws.amazon.com/documentation/" target="_blank"><i class="icon fas fa-cloud"></i>AWS Documentation</a></li>
+                    <li><a href="https://learn.microsoft.com/en-us/azure/" target="_blank"><i class="icon fas fa-cloud-upload-alt"></i>Azure Learning Paths</a></li>
+                    <li><a href="https://cloud.google.com/docs" target="_blank"><i class="icon fab fa-google"></i>Google Cloud Docs</a></li>
+                    <li><a href="https://www.terraform.io/docs" target="_blank"><i class="icon fas fa-cogs"></i>Terraform Documentation</a></li>
+                </ul>
+            </div>
+
+            <div class="resource-section">
+                <h2>Cybersecurity</h2>
+                <p>Understand security protocols and best practices:</p>
+                <ul class="resource-list">
+                    <li><a href="https://owasp.org/" target="_blank"><i class="icon fas fa-shield-alt"></i>OWASP Foundation</a></li>
+                    <li><a href="https://nvlpubs.nist.gov/" target="_blank"><i class="icon fas fa-book"></i>NIST Publications</a></li>
+                    <li><a href="https://www.coursera.org/browse/information-technology/cybersecurity" target="_blank"><i class="icon fas fa-graduation-cap"></i>Cybersecurity Courses on Coursera</a></li>
+                    <li><a href="https://www.kali.org/" target="_blank"><i class="icon fas fa-terminal"></i>Kali Linux Documentation</a></li>
+                </ul>
+            </div>
+
+            <div class="resource-section">
+                <h2>AI & Machine Learning</h2>
+                <p>Explore cutting-edge AI and machine learning tools:</p>
+                <ul class="resource-list">
+                    <li><a href="https://www.tensorflow.org/" target="_blank"><i class="icon fas fa-robot"></i>TensorFlow Documentation</a></li>
+                    <li><a href="https://pytorch.org/docs/" target="_blank"><i class="icon fas fa-project-diagram"></i>PyTorch Documentation</a></li>
+                    <li><a href="https://scikit-learn.org/stable/" target="_blank"><i class="icon fas fa-chart-line"></i>Scikit-Learn Guide</a></li>
+                    <li><a href="https://machinelearningmastery.com/" target="_blank"><i class="icon fas fa-brain"></i>Machine Learning Mastery Blog</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="video-embed">
+            <h2>Featured Video Tutorials</h2>
+            <iframe src="https://www.youtube.com/embed/3ZqBtGtShMU" allowfullscreen></iframe>
+        </div>
+    </div>
+</body>
+</html>

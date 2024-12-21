@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - TechPath</title>
+    <style>
+        :root {
+            --primary-color: #00ff9d;
+            --secondary-color: #2a2d3e;
+            --background-dark: #1a1d2b;
+            --text-primary: #ffffff;
+            --text-secondary: #8b8d93;
+            --accent-green: #4caf50;
+            --hover-color: #34374c;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--background-dark);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            max-width: 400px;
+            width: 100%;
+            background: var(--secondary-color);
+            padding: 20px 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--text-primary);
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--hover-color);
+            border-radius: 5px;
+            background: var(--background-dark);
+            color: var(--text-primary);
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--accent-green);
+            color: var(--text-primary);
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: var(--hover-color);
+        }
+
+        p {
+            text-align: center;
+            margin-top: 15px;
+            color: var(--text-secondary);
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Login</h1>
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            </div>
+            <button type="submit">Login</button>
+        </form>
+        <p>Don't have an account? <a href="/signup">Sign Up</a></p>
+    </div>
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', async function (event) {
+            event.preventDefault();
+
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value.trim();
+
+            try {
+                const response = await fetch('/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, password }),
+                });
+
+                const data = await response.json();
+
+                if (response.ok && data.success) {
+                    Swal.fire('Login Successful!', 'Redirecting to your dashboard...', 'success').then(() => {
+                        const careerPath = data.user.career_interest.replace(/\s+/g, '-').toLowerCase();
+                        sessionStorage.setItem('username', data.user.name); // Save user name
+                        sessionStorage.setItem('careerInterest', careerPath); // Save career path
+                        window.location.href = `/dashboard-${careerPath}`;
+                    });
+                } else {
+                    Swal.fire('Login Failed', data.message || 'Invalid credentials.', 'error');
+                }
+            } catch (error) {
+                Swal.fire('Error', 'An unexpected error occurred. Please try again later.', 'error');
+                console.error('Login Error:', error);
+            }
+        });
+    </script>
+</body>
+</html>

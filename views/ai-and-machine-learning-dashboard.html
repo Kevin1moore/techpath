@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI & Machine Learning Dashboard</title>
+    <style>
+        :root {
+            --primary-color: #00ff9d;
+            --secondary-color: #2a2d3e;
+            --background-dark: #1a1d2b;
+            --text-primary: #ffffff;
+            --text-secondary: #8b8d93;
+            --accent-blue: #2196f3;
+            --card-bg: #2a2d3e;
+            --hover-color: #34374c;
+            --gradient: linear-gradient(135deg, #4caf50, #7c4dff);
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--background-dark);
+            color: var(--text-primary);
+            margin: 0;
+            display: flex;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 250px;
+            background-color: var(--secondary-color);
+            height: 100vh;
+            padding: 20px;
+            box-shadow: 3px 0 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .logo {
+            text-align: center;
+            font-size: 24px;
+            color: var(--primary-color);
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+
+        .nav-links a {
+            display: block;
+            padding: 10px 15px;
+            color: var(--text-primary);
+            text-decoration: none;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-links a.active,
+        .nav-links a:hover {
+            background-color: var(--hover-color);
+            color: var(--primary-color);
+        }
+
+        .logout-btn {
+            margin-top: 30px;
+            width: 100%;
+            padding: 10px;
+            background-color: #ff4757;
+            color: var(--text-primary);
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            background-color: var(--hover-color);
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            padding: 30px;
+        }
+
+        .hero-section {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .hero-section h1 {
+            font-size: 2.5em;
+            color: var(--primary-color);
+        }
+
+        .hero-section p {
+            font-size: 1.2em;
+            color: var(--text-secondary);
+            margin: 10px 0;
+        }
+
+        /* Cards Section */
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .card h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: var(--text-secondary);
+        }
+
+        .card a {
+            display: inline-block;
+            margin-top: 10px;
+            color: var(--accent-blue);
+            text-decoration: none;
+        }
+
+        .card a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo">TechPath</div>
+        <nav class="nav-links">
+            <a href="#" id="dashboard-link" class="active">Dashboard</a>
+            <a href="#" id="create-path-link">Create Path</a>
+            <a href="#" id="learning-link">Learning</a>
+            <a href="#" id="resources-link">Resources</a>
+            <a href="#" id="profile-link">Profile</a>
+        </nav>
+        <button class="logout-btn" onclick="logout()">Logout</button>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Hero Section -->
+        <div class="hero-section">
+            <h1>Welcome, <span id="username">Guest</span>!</h1>
+            <p>Explore the fascinating world of **AI and Machine Learning**. Master tools, concepts, and frameworks to build intelligent systems and unlock new possibilities.</p>
+            <p>Start your journey today with tutorials, resources, and projects curated just for you.</p>
+        </div>
+
+        <!-- Cards Section -->
+        <div class="cards-container">
+            <div class="card">
+                <img src="https://miro.medium.com/max/1400/1*ug92XAYAr1a71Nyr9YQL5A.png" alt="AI Basics">
+                <h3>Introduction to AI</h3>
+                <p>Learn the basics of Artificial Intelligence and its real-world applications.</p>
+                <a href="https://example.com/ai-intro" target="_blank">Learn More</a>
+            </div>
+            <div class="card">
+                <img src="https://miro.medium.com/max/800/1*fD9tNGP7mOexHgK-k8x8oA.jpeg" alt="Machine Learning">
+                <h3>Machine Learning Tutorials</h3>
+                <p>Step-by-step guides to implement machine learning models.</p>
+                <a href="https://example.com/ml-guides" target="_blank">Watch Tutorials</a>
+            </div>
+            <div class="card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/TensorFlow_logo.svg/200px-TensorFlow_logo.svg.png" alt="TensorFlow">
+                <h3>TensorFlow Projects</h3>
+                <p>Build projects with TensorFlow for scalable machine learning systems.</p>
+                <a href="https://example.com/tensorflow" target="_blank">Explore Projects</a>
+            </div>
+            <div class="card">
+                <img src="https://miro.medium.com/max/1200/1*HxYRV9eWk3bA_q6CyRDk-A.jpeg" alt="AI Tools">
+                <h3>AI Tools & Libraries</h3>
+                <p>Get hands-on experience with Scikit-learn, PyTorch, and more.</p>
+                <a href="https://example.com/ai-tools" target="_blank">Learn More</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dynamic Routing Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const careerInterest = sessionStorage.getItem('careerInterest');
+            const username = sessionStorage.getItem('username');
+
+            if (!careerInterest || !username) {
+                alert('Session expired! Please log in again.');
+                window.location.href = '/login';
+                return;
+            }
+
+            document.getElementById("username").textContent = username;
+
+            document.getElementById("dashboard-link").href = `/dashboard-${careerInterest}`;
+            document.getElementById("create-path-link").href = `/create-roadmap`;
+            document.getElementById("learning-link").href = `/learning`;
+            document.getElementById("resources-link").href = `/resources`;
+            document.getElementById("profile-link").href = `/profile`;
+        });
+
+        function logout() {
+            sessionStorage.clear();
+            window.location.href = '/login';
+        }
+    </script>
+</body>
+</html>

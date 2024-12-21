@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - TechPath</title>
+    <style>
+        :root {
+            --primary-color: #00ff9d;
+            --secondary-color: #2a2d3e;
+            --background-dark: #1a1d2b;
+            --text-primary: #ffffff;
+            --text-secondary: #8b8d93;
+            --accent-blue: #2196f3;
+            --accent-green: #4caf50;
+            --card-bg: #2a2d3e;
+            --hover-color: #34374c;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--background-dark);
+            color: var(--text-primary);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            max-width: 500px;
+            width: 90%;
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--text-primary);
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--hover-color);
+            border-radius: 5px;
+            background: var(--secondary-color);
+            color: var(--text-primary);
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--accent-green);
+            color: var(--text-primary);
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: var(--hover-color);
+        }
+
+        p {
+            text-align: center;
+            margin-top: 15px;
+            color: var(--text-secondary);
+        }
+
+        a {
+            color: var(--accent-blue);
+            text-decoration: none;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Create Your Account</h1>
+        <form id="signupForm">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            </div>
+            <div class="form-group">
+                <label for="career_interest">Career Interest</label>
+                <select id="career_interest" name="career_interest" required>
+                    <option value="" disabled selected>Select your career interest</option>
+                    <option value="Web Development">Web Development</option>
+                    <option value="Cloud Engineering">Cloud Engineering</option>
+                    <option value="Cybersecurity">Cybersecurity</option>
+                    <option value="AI & Machine Learning">AI & Machine Learning</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="skill_level">Skill Level</label>
+                <select id="skill_level" name="skill_level" required>
+                    <option value="" disabled selected>Select your skill level</option>
+                    <option value="Beginner">Beginner</option>
+                    <option value="Intermediate">Intermediate</option>
+                    <option value="Advanced">Advanced</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="time_commitment">Time Commitment</label>
+                <select id="time_commitment" name="time_commitment" required>
+                    <option value="" disabled selected>How much time can you commit?</option>
+                    <option value="Full-time">Full-time</option>
+                    <option value="Part-time">Part-time</option>
+                    <option value="Casual">Casual</option>
+                </select>
+            </div>
+            <button type="submit">Sign Up</button>
+        </form>
+        <p>Already have an account? <a href="/login">Login</a></p>
+    </div>
+    <script>
+        document.getElementById('signupForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+        
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                password: document.getElementById('password').value,
+                career_interest: document.getElementById('career_interest').value,
+                skill_level: document.getElementById('skill_level').value,
+                time_commitment: document.getElementById('time_commitment').value,
+            };
+        
+            try {
+                const response = await fetch('/signup', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData),
+                });
+        
+                const data = await response.json();
+        
+                if (response.ok) {
+                    Swal.fire('Signup Successful!', 'Redirecting to your dashboard...', 'success').then(() => {
+                        window.location.href = data.redirectUrl;
+                    });
+                } else {
+                    Swal.fire('Signup Failed', data.message || 'Something went wrong.', 'error');
+                }
+            } catch (error) {
+                Swal.fire('Error', 'An unexpected error occurred. Please try again later.', 'error');
+            }
+        });
+        </script>        
+</body>
+</html>

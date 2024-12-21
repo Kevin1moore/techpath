@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4caf50;
+            --secondary-color: #2a2d3e;
+            --background-dark: #1a1d2b;
+            --text-primary: #ffffff;
+            --text-secondary: #8b8d93;
+            --accent-blue: #2196f3;
+            --hover-color: #34374c;
+            --gradient: linear-gradient(135deg, #4caf50, #2196f3);
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--background-dark);
+            color: var(--text-primary);
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .header {
+            width: 100%;
+            padding: 20px;
+            background: var(--gradient);
+            text-align: center;
+            color: #fff;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .learning-content {
+            max-width: 1200px;
+            width: 100%;
+            padding: 20px;
+        }
+
+        .learning-paths {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .path-card {
+            background: var(--hover-color);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .path-card h3 {
+            color: var(--primary-color);
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .path-card p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .path-card a {
+            display: inline-block;
+            padding: 10px 20px;
+            background: var(--accent-blue);
+            color: #fff;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .path-card a:hover {
+            background: var(--primary-color);
+        }
+
+        .learning-resources {
+            margin-top: 40px;
+        }
+
+        .learning-resources h2 {
+            color: var(--primary-color);
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .resource-item {
+            background: var(--hover-color);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .resource-item h3 {
+            color: var(--accent-blue);
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .resource-item a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .resource-item a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">Learning Hub</div>
+
+    <div class="learning-content">
+        <h1>Choose Your Path</h1>
+        <p>Explore the various learning paths we offer to help you master your skills.</p>
+
+        <div class="learning-paths">
+            <div class="path-card">
+                <h3>Web Development</h3>
+                <p>Learn HTML, CSS, JavaScript, and frameworks to build stunning websites.</p>
+                <a href="/web-development-dashboard">Start Learning</a>
+            </div>
+            <div class="path-card">
+                <h3>Cloud Engineering</h3>
+                <p>Master cloud platforms like AWS, Azure, and Google Cloud.</p>
+                <a href="/dashboard-cloud-engineering">Start Learning</a>
+            </div>
+            <div class="path-card">
+                <h3>Cybersecurity</h3>
+                <p>Understand security protocols and protect systems from vulnerabilities.</p>
+                <a href="/dashboard-cybersecurity">Start Learning</a>
+            </div>
+            <div class="path-card">
+                <h3>AI & Machine Learning</h3>
+                <p>Dive into the world of AI and create intelligent systems.</p>
+                <a href="/dashboard-ai-&-machine-learning">Start Learning</a>
+            </div>
+        </div>
+
+        <div class="learning-resources">
+            <h2>Additional Resources</h2>
+            <div class="resource-grid">
+                <div class="resource-item">
+                    <h3>GitHub Repositories</h3>
+                    <a href="https://github.com/" target="_blank">Browse GitHub</a>
+                </div>
+                <div class="resource-item">
+                    <h3>Video Tutorials</h3>
+                    <a href="https://www.youtube.com/" target="_blank">Watch on YouTube</a>
+                </div>
+                <div class="resource-item">
+                    <h3>Official Documentation</h3>
+                    <a href="https://developer.mozilla.org/" target="_blank">Visit MDN</a>
+                </div>
+                <div class="resource-item">
+                    <h3>Community Forums</h3>
+                    <a href="https://stackoverflow.com/" target="_blank">Join StackOverflow</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Retrieve careerInterest from sessionStorage
+        const careerInterest = sessionStorage.getItem('careerInterest');
+
+        // Get all dashboard links on the page
+        const dashboardLinks = document.querySelectorAll('a[href*="/dashboard"]');
+
+        // Update all dashboard links dynamically
+        if (careerInterest) {
+            dashboardLinks.forEach(link => {
+                if (link.href.includes('/web-development-dashboard')) {
+                    link.href = `/dashboard-${careerInterest}`;
+                } else if (link.href.includes('/dashboard-cloud-engineering')) {
+                    link.href = `/dashboard-${careerInterest}`;
+                } else if (link.href.includes('/dashboard-cybersecurity')) {
+                    link.href = `/dashboard-${careerInterest}`;
+                } else if (link.href.includes('/dashboard-ai-&-machine-learning')) {
+                    link.href = `/dashboard-${careerInterest}`;
+                }
+            });
+        } else {
+            // Fallback logic: default to general dashboard
+            dashboardLinks.forEach(link => {
+                link.href = '/general-dashboard.html';
+            });
+        }
+
+        // Redirect to login if sessionStorage is missing
+        if (!sessionStorage.getItem('username') || !careerInterest) {
+            alert('Session expired! Please log in again.');
+            window.location.href = '/login';
+        }
+    });
+</script>
+
+</html>

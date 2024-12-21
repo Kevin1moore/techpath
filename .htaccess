@@ -1,0 +1,10 @@
+# Enable rewrite engine
+RewriteEngine On
+
+# Set DirectoryIndex to a specific subfolder
+DirectoryIndex views/index.html
+
+# Redirect all traffic to Node.js app on port 3001
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ http://localhost:3001/$1 [P,L]

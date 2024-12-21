@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechPath - General Learning Roadmap</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #1a1d2b;
+            color: #ffffff;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 250px;
+            background-color: #2a2d3e;
+            padding: 20px;
+            position: fixed;
+            height: 100vh;
+        }
+
+        .sidebar .logo {
+            font-size: 24px;
+            color: #00ff9d;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .nav-links a {
+            display: block;
+            padding: 10px;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .nav-links a.active, .nav-links a:hover {
+            background-color: #00ff9d;
+            color: #000;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: 270px;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #00ff9d;
+        }
+
+        /* Roadmap Grid */
+        .roadmap-container {
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+        }
+
+        .roadmap-path {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            position: relative;
+            gap: 20px;
+            text-align: center;
+        }
+
+        .card {
+            background-color: #34374c;
+            padding: 15px;
+            border-radius: 10px;
+            position: relative;
+            color: #ffffff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card h3 {
+            margin: 0 0 10px;
+            color: #00ff9d;
+        }
+
+        .card p {
+            margin: 5px 0;
+        }
+
+        /* Arrows */
+        .arrow {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: url('https://upload.wikimedia.org/wikipedia/commons/e/e3/Simple_arrow.svg') no-repeat center;
+            background-size: contain;
+        }
+
+        .arrow.down {
+            left: 50%;
+            transform: translateX(-50%) rotate(90deg);
+            bottom: -35px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo"><i class="fas fa-code"></i> TechPath</div>
+        <nav class="nav-links">
+            <a href="/dashboard">Dashboard</a>
+            <a href="/create-roadmap">Create Path</a>
+            <a href="/roadmap" class="active">My Roadmap</a>
+            <a href="/resources">Resources</a>
+            <a href="/profile">Profile</a>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <h1>General Learning Roadmap</h1>
+        <div class="roadmap-container">
+            <!-- Web Development Path -->
+            <div class="timeline-section">
+                <h2>Web Development Roadmap</h2>
+                <div class="roadmap-path">
+                    <div class="card">
+                        <h3>Beginner Level</h3>
+                        <p>HTML, CSS, JavaScript</p>
+                    </div>
+                    <div class="arrow down"></div>
+                    <div class="card">
+                        <h3>Intermediate Level</h3>
+                        <p>React, Node.js</p>
+                    </div>
+                    <div class="arrow down"></div>
+                    <div class="card">
+                        <h3>Advanced Level</h3>
+                        <p>Full-Stack Applications</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cybersecurity Path -->
+            <div class="timeline-section">
+                <h2>Cybersecurity Roadmap</h2>
+                <div class="roadmap-path">
+                    <div class="card">
+                        <h3>Beginner Level</h3>
+                        <p>Networking Basics</p>
+                    </div>
+                    <div class="arrow down"></div>
+                    <div class="card">
+                        <h3>Intermediate Level</h3>
+                        <p>System Security</p>
+                    </div>
+                    <div class="arrow down"></div>
+                    <div class="card">
+                        <h3>Advanced Level</h3>
+                        <p>Penetration Testing</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AI & ML Path -->
+            <div class="timeline-section">
+                <h2>AI & ML Roadmap</h2>
+                <div class="roadmap-path">
+                    <div class="card">
+                        <h3>Beginner Level</h3>
+                        <p>Python Programming</p>
+                    </div>
+                    <div class="arrow down"></div>
+                    <div class="card">
+                        <h3>Intermediate Level</h3>
+                        <p>Machine Learning Models</p>
+                    </div>
+                    <div class="arrow down"></div>
+                    <div class="card">
+                        <h3>Advanced Level</h3>
+                        <p>Deep Learning</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cloud Engineering Path -->
+            <div class="timeline-section">
+                <h2>Cloud Engineering Roadmap</h2>
+                <div class="roadmap-path">
+                    <div class="card">
+                        <h3>Beginner Level</h3>
+                        <p>Cloud Platforms (AWS, Azure)</p>
+                    </div>
+                    <div class="arrow down"></div>
+                    <div class="card">
+                        <h3>Intermediate Level</h3>
+                        <p>CI/CD Pipelines</p>
+                    </div>
+                    <div class="arrow down"></div>
+                    <div class="card">
+                        <h3>Advanced Level</h3>
+                        <p>Multi-Cloud Architecture</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Retrieve careerInterest from sessionStorage
+        const careerInterest = sessionStorage.getItem('careerInterest');
+
+        // Get the Dashboard link
+        const dashboardLink = document.querySelector('a[href="/dashboard"]');
+
+        // Update the Dashboard link based on the careerInterest
+        if (careerInterest) {
+            dashboardLink.href = `/dashboard-${careerInterest}`;
+        } else {
+            dashboardLink.href = '/general-dashboard.html'; // Fallback to general dashboard
+        }
+
+        // Redirect to login if sessionStorage is missing
+        if (!sessionStorage.getItem('username') || !careerInterest) {
+            alert('Your session has expired. Please log in again.');
+            window.location.href = '/login';
+        }
+    });
+</script>
+
+</html>

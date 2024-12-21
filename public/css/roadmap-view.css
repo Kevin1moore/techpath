@@ -1,0 +1,504 @@
+.roadmap-header {
+    background-color: var(--card-bg);
+    padding: 2rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.path-info h1 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.path-stats {
+    display: flex;
+    gap: 1.5rem;
+    color: var(--text-secondary);
+}
+
+.path-stats span {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.header-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+/* Roadmap Container Layout */
+.roadmap-container {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 2rem;
+}
+
+/* Timeline Styles */
+.roadmap-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.timeline-section {
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    padding: 2rem;
+    position: relative;
+}
+
+.timeline-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50px;
+    height: 100%;
+    width: 2px;
+    background-color: var(--hover-color);
+    z-index: 1;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.completion-badge {
+    background-color: var(--background-dark);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+/* Skill Nodes */
+.skill-nodes {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    position: relative;
+}
+
+.skill-node {
+    background-color: var(--background-dark);
+    border-radius: 8px;
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-left: 2rem;
+}
+
+.node-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.node-header i {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}
+
+.status {
+    margin-left: auto;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+}
+
+.skill-node.completed .status {
+    background-color: rgba(0, 255, 157, 0.1);
+    color: var(--primary-color);
+}
+
+.skill-node.active .status {
+    background-color: rgba(33, 150, 243, 0.1);
+    color: var(--accent-blue);
+}
+
+.node-content {
+    display: none;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--hover-color);
+}
+
+.skill-node.expanded .node-content {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+/* Resource Links */
+.resource-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    padding: 0.5rem;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.resource-link:hover {
+    background-color: var(--hover-color);
+    color: var(--primary-color);
+}
+
+/* Progress Tracker */
+.checklist {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.checkbox-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    cursor: pointer;
+}
+
+.checkbox-item input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+    border: 2px solid var(--hover-color);
+    appearance: none;
+    cursor: pointer;
+}
+
+.checkbox-item input[type="checkbox"]:checked {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+/* Sidebar Styles */
+.roadmap-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.achievement-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background-color: var(--background-dark);
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.achievement-info h4 {
+    color: var(--primary-color);
+    margin-bottom: 0.25rem;
+}
+
+.achievement-info p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+/* Resource Card */
+.resources-card .resource-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem;
+    background-color: var(--background-dark);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+    transition: all 0.3s ease;
+}
+
+.resources-card .resource-item:hover {
+    transform: translateX(5px);
+    background-color: var(--hover-color);
+}
+
+.resources-card .resource-item i {
+    color: var(--primary-color);
+}
+
+/* Notes Card */
+.notes-list {
+    max-height: 300px;
+    overflow-y: auto;
+    margin-bottom: 1rem;
+}
+
+.note-item {
+    padding: 1rem;
+    background-color: var(--background-dark);
+    border-radius: 8px;
+    margin-bottom: 0.75rem;
+}
+
+.note-item .note-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.note-item .note-date {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.full-width {
+    width: 100%;
+}
+
+/* Status Indicators */
+.locked .node-header {
+    opacity: 0.5;
+}
+
+.locked .status {
+    background-color: var(--hover-color);
+    color: var(--text-secondary);
+}
+
+.timeline-section.completed::after {
+    content: '✓';
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    color: var(--primary-color);
+    font-size: 1.5rem;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* Interactive Elements */
+.skill-node:hover:not(.locked) {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.skill-node.active {
+    border-left: 4px solid var(--primary-color);
+}
+
+.skill-node.completed {
+    border-left: 4px solid var(--accent-green);
+}
+
+/* Progress Indicators */
+.progress-indicator {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.progress-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--hover-color);
+}
+
+.progress-dot.active {
+    background-color: var(--primary-color);
+}
+
+/* Resource Tags */
+.resource-tag {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    margin-right: 0.5rem;
+    background-color: var(--hover-color);
+}
+
+.resource-tag.video {
+    color: #ff7675;
+}
+
+.resource-tag.article {
+    color: #74b9ff;
+}
+
+.resource-tag.course {
+    color: #a8e6cf;
+}
+
+/* Tooltip Styles */
+[data-tooltip] {
+    position: relative;
+}
+
+[data-tooltip]:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0.5rem;
+    background-color: var(--card-bg);
+    color: var(--text-primary);
+    border-radius: 4px;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    z-index: 10;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .roadmap-container {
+        grid-template-columns: 1fr;
+    }
+
+    .roadmap-sidebar {
+        order: -1;
+    }
+}
+
+@media (max-width: 768px) {
+    .roadmap-header {
+        padding: 1rem;
+    }
+
+    .header-content {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .path-stats {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .skill-node {
+        margin-left: 1rem;
+    }
+
+    .timeline-section::before {
+        left: 20px;
+    }
+
+    .node-header {
+        flex-wrap: wrap;
+    }
+
+    .status {
+        width: 100%;
+        text-align: center;
+        margin-top: 0.5rem;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .sidebar,
+    .header-actions,
+    .btn-secondary,
+    .btn-primary {
+        display: none;
+    }
+
+    .main-content {
+        margin: 0;
+        padding: 0;
+    }
+
+    .skill-node {
+        break-inside: avoid;
+    }
+
+    .node-content {
+        display: block !important;
+    }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .skill-node,
+    .resource-item,
+    .achievement-item {
+        transition: none;
+    }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+    :root {
+        --primary-color: #00ff00;
+        --text-primary: #ffffff;
+        --text-secondary: #ffffff;
+    }
+}
+
+/* Focus States */
+.skill-node:focus,
+.resource-link:focus,
+.checkbox-item:focus-within {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* Loading States */
+.loading {
+    position: relative;
+    pointer-events: none;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+}
+
+.loading::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30px;
+    height: 30px;
+    border: 3px solid var(--primary-color);
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    z-index: 1;
+}
+
+@keyframes spin {
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+}
